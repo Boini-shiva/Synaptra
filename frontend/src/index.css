@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-page: #F8F9FC;
+    --bg-surface: #FFFFFF;
+    --bg-surface-subtle: #F1F5F9;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --border-subtle: #E2E8F0;
+    --border-strong: #CBD5E1;
+    --brand-violet: #7C3AED;
+    --brand-violet-hover: #6D28D9;
+    --brand-violet-subtle: #F5F3FF;
+    --brand-violet-border: #DDD6FE;
+    --color-success: #059669;
+    --color-warning: #D97706;
+    --color-error: #DC2626;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+}
+
+/* Restrained, modern scrollbars for light theme */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F8F9FC;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Subtle active workflow state */
+@keyframes softPulse {
+  0%, 100% {
+    border-color: #7C3AED;
+    box-shadow: 0 0 0 1px #7C3AED, 0 4px 12px rgba(124, 58, 237, 0.08);
+  }
+  50% {
+    border-color: #A78BFA;
+    box-shadow: 0 0 0 2px #A78BFA, 0 4px 16px rgba(124, 58, 237, 0.14);
+  }
+}
+
+.stage-running {
+  animation: softPulse 2.2s infinite ease-in-out;
+}
