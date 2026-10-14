@@ -18,10 +18,12 @@ User Browser
                                                                └──► Qdrant Vector Memory
 ```
 
-- **Frontend**: Vite compiles React components into `frontend/dist`.
-- **Backend**: Vercel Python Serverless Runtime executes `api/index.py` (which mounts `backend/main.py`).
-- **Unified Routing**: Handled seamlessly by `vercel.json` rewrites (`/api/(.*)` -> `api/index.py` and `/(.*)` -> `/index.html`).
+- **Services Architecture**: Configured via modern Vercel Services (`services` block in `vercel.json`).
+- **Frontend Service (`frontend`)**: Vite React SPA located in `frontend/`, publicly serving `/(.*)`.
+- **Backend Service (`backend`)**: FastAPI Python server located in `backend/`, publicly serving `/api/(.*)`.
+- **Unified Routing**: Handled seamlessly by top-level rewrites (`/api/(.*)` -> `{ "service": "backend" }` and `/(.*)` -> `{ "service": "frontend" }`).
 - **No CORS Issues**: Because the frontend and backend share the exact same origin, browser requests to `/api/health`, `/api/workflows`, and `/api/chat` work natively without cross-origin blocks.
+
 
 ---
 
